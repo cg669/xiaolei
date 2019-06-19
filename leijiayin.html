@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小雷画像</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+        .xiao-lei{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%,-50%,0);
+            width: 500px;
+            height: 800px;
+            border: 1px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="xiaoLei" class="xiao-lei" width="500" height="800"></canvas>
+    <script type="text/javascript">
+        /// <reference path="./node_modules/@types/three/index.d.ts" />
+        const delay = time => new Promise(resolve => setTimeout(resolve),time)
+        function getXiaoLei2(){
+            /** @type {HTMLCanvasElement} */
+            const canvas = document.getElementById('xiaoLei');
+            const ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#fff';
+            function loop(fns,key = 0 ){
+                // let key = 0;
+                function stokeFn(){
+                    if(key < fns.length){
+                        fns[key]();
+                        ctx.stroke();
+                    }
+                }
+                stokeFn()
+                key = key + 1
+                let handler = setTimeout(()=>{
+                    loop(fns, key);
+                },200)
+                if(key >= fns.length ){
+                    clearTimeout(handler)
+                    buildOther()
+                }
+                
+            }
+            function buildOther(){
+                ctx.beginPath() ;
+                ctx.lineWidth = 2 ;
+                ctx.fillStyle = 'red' ; 
+                ctx.save();
+                ctx.restore() ;
+                ctx.beginPath() ;
+                ctx.moveTo(190,212) ;
+                ctx.bezierCurveTo(150,214,150,246,190,246) ;
+                ctx.bezierCurveTo(230,246,230,214,190,212) ;
+                ctx.fill() ;
+                
+                ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#fff';
+                ctx.moveTo(123,253) ;
+                ctx.quadraticCurveTo(193,275,272,253) ;
+                ctx.bezierCurveTo(260,300,120,290,123,253) ;
+                ctx.stroke()
+            }
+            loop([
+                ()=> ctx.moveTo(33,43),
+                ()=> ctx.quadraticCurveTo(55,40,124,73),
+                ()=> ctx.moveTo(33,43),
+                ()=> ctx.lineTo(68,140),
+                ()=> ctx.moveTo(33,43),
+                ()=> ctx.quadraticCurveTo(73,92,89,130),
+                ()=> ctx.quadraticCurveTo(75,127,81,136),
+                ()=> ctx.lineTo(73,136),
+                ()=> ctx.lineTo(74,139),
+                ()=> ctx.quadraticCurveTo(36,164,24,213),
+                ()=> ctx.bezierCurveTo(52,215,49,223,41,233),
+                ()=> ctx.quadraticCurveTo(61,235,76,243),
+                ()=> ctx.bezierCurveTo(88,350,290,350,309,252),
+                ()=> ctx.quadraticCurveTo(320,239,353,234),
+                ()=> ctx.bezierCurveTo(338,223,354,215,371,214),
+                ()=> ctx.quadraticCurveTo(360,169,325,144),
+                ()=> ctx.lineTo(333,121),
+                ()=> ctx.quadraticCurveTo(317,100,341,97),
+                ()=> ctx.lineTo(361,43),
+                ()=> ctx.quadraticCurveTo(307,48,266,75),
+                ()=> ctx.moveTo(361,43),
+                ()=> ctx.quadraticCurveTo(332,72,304,133),
+                ()=> ctx.quadraticCurveTo(318,127,313,134),
+                ()=> ctx.quadraticCurveTo(323,132,318,140),
+                ()=> ctx.quadraticCurveTo(324,136,325,144),
+                ()=> ctx.moveTo(266,75),
+                ()=> ctx.quadraticCurveTo(265,90,243,94),
+                ()=> ctx.lineTo(133,112),
+                ()=> ctx.quadraticCurveTo(90,116,107,91),
+                ()=> ctx.quadraticCurveTo(147,29,223,27),
+                ()=> ctx.quadraticCurveTo(272,38,266,75),
+                ()=> ctx.moveTo(107,91),
+                ()=> ctx.quadraticCurveTo(111,110,144,100),
+                ()=> ctx.lineTo(244,80),
+                ()=> ctx.quadraticCurveTo(264,76,267,61),
+                ()=> ctx.moveTo(196,30),
+                ()=> ctx.lineTo(176,51),
+                ()=> ctx.quadraticCurveTo(224,43,240,66),
+                ()=> ctx.moveTo(150,200),
+                ()=> ctx.arc(125,200,25,0,2*Math.PI),
+                ()=> ctx.moveTo(300,200),
+                ()=> ctx.arc(275,200,25,0,2*Math.PI),
+            ])
+        }
+        
+        function getXiaoLei(){
+            /** @type {HTMLCanvasElement} */
+            const canvas = document.getElementById('xiaoLei')
+            const ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#fff';
+            ctx.moveTo(33,43);
+            ctx.quadraticCurveTo(55,40,124,73);
+            ctx.moveTo(33,43);
+            ctx.lineTo(68,140);
+            ctx.moveTo(33,43);
+            ctx.quadraticCurveTo(73,92,89,130);
+            ctx.quadraticCurveTo(75,127,81,136);
+            ctx.lineTo(73,136);
+            ctx.lineTo(74,139);
+            ctx.quadraticCurveTo(36,164,24,213);
+            ctx.bezierCurveTo(52,215,49,223,41,233);
+            ctx.quadraticCurveTo(61,235,76,243);
+            ctx.bezierCurveTo(88,350,290,350,309,252);
+            ctx.quadraticCurveTo(320,239,353,234);
+            ctx.bezierCurveTo(338,223,354,215,371,214);
+            ctx.quadraticCurveTo(360,169,325,144);
+            ctx.lineTo(333,121);
+            ctx.quadraticCurveTo(317,100,341,97);
+            ctx.lineTo(361,43);
+            ctx.quadraticCurveTo(307,48,266,75);
+            ctx.moveTo(361,43);
+            ctx.quadraticCurveTo(332,72,304,133);
+            ctx.quadraticCurveTo(318,127,313,134);
+            ctx.quadraticCurveTo(323,132,318,140);
+            ctx.quadraticCurveTo(324,136,325,144)
+            ctx.moveTo(266,75);
+            ctx.quadraticCurveTo(265,90,243,94);
+            ctx.lineTo(133,112);
+            ctx.quadraticCurveTo(90,116,107,91);
+            ctx.quadraticCurveTo(147,29,223,27);
+            ctx.quadraticCurveTo(272,38,266,75);
+            ctx.moveTo(107,91);
+            ctx.quadraticCurveTo(111,110,144,100);
+            ctx.lineTo(244,80);
+            ctx.quadraticCurveTo(264,76,267,61);
+            ctx.moveTo(196,30);
+            ctx.lineTo(176,51);
+            ctx.quadraticCurveTo(224,43,240,66);
+            ctx.moveTo(150,200);
+            ctx.arc(125,200,25,0,2*Math.PI);
+            ctx.moveTo(300,200);
+            ctx.arc(275,200,25,0,2*Math.PI);
+            ctx.stroke();
+
+            ctx.beginPath() ;
+            ctx.lineWidth = 2 ;
+            ctx.fillStyle = 'red' ; 
+            ctx.save() ;
+            ctx.restore() ;
+            ctx.beginPath() ;
+            ctx.moveTo(190,212) ;
+            ctx.bezierCurveTo(150,214,150,246,190,246) ;
+            ctx.bezierCurveTo(230,246,230,214,190,212) ;
+            ctx.fill() ;
+            
+            ctx.beginPath();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#fff';
+            ctx.moveTo(123,253) ;
+            ctx.quadraticCurveTo(193,275,272,253) ;
+            ctx.bezierCurveTo(260,300,120,290,123,253) ;
+            ctx.stroke()
+        }
+        getXiaoLei2()
+        // console.log(ctx,'ctx')
+    </script>
+</body>
+</html>
